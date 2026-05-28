@@ -138,12 +138,12 @@ let
       masked = bitAnd x shlMask;
       hasSign = bitAnd masked shlSignBit != 0;
       safe = bitAnd masked shlValMask;
-      left = let r = safe * shlMult; in if hasSign then r + intMin else r;
-      right =
-        if x < 0 then
-          (bitAnd x intMax) / shrDiv + shrHighBit
-        else
-          x / shrDiv;
+      left =
+        let
+          r = safe * shlMult;
+        in
+        if hasSign then r + intMin else r;
+      right = if x < 0 then (bitAnd x intMax) / shrDiv + shrHighBit else x / shrDiv;
     in
     bitOr left right;
 
@@ -157,7 +157,11 @@ let
       signBit = 4611686018427387904; # 2^62
       hasSign = bitAnd masked signBit != 0;
       safe = bitAnd masked (signBit - 1);
-      left = let r = safe * 2; in if hasSign then r + intMin else r;
+      left =
+        let
+          r = safe * 2;
+        in
+        if hasSign then r + intMin else r;
       right = if x < 0 then 1 else 0;
     in
     bitOr left right;

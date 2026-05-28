@@ -9,12 +9,7 @@ let
   encodeBinary =
     n:
     let
-      go =
-        num: acc:
-        if num == 0 then
-          acc
-        else
-          go (num / 2) ([ (num - (num / 2) * 2) ] ++ acc);
+      go = num: acc: if num == 0 then acc else go (num / 2) ([ (num - (num / 2) * 2) ] ++ acc);
     in
     if n == 0 then [ 0 ] else go n [ ];
 

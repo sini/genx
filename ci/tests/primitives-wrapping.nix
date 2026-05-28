@@ -11,76 +11,76 @@ let
   minInt = -9223372036854775807 - 1;
 in
 {
-  primitives-wrapping.test-add-no-overflow = {
+  flake.tests.primitives-wrapping.test-add-no-overflow = {
     expr = wrapAdd 100 200;
     expected = 300;
   };
-  primitives-wrapping.test-add-positive-overflow = {
+  flake.tests.primitives-wrapping.test-add-positive-overflow = {
     expr = wrapAdd maxInt 1;
     expected = minInt;
   };
-  primitives-wrapping.test-add-negative-overflow = {
+  flake.tests.primitives-wrapping.test-add-negative-overflow = {
     expr = wrapAdd minInt (-1);
     expected = maxInt;
   };
-  primitives-wrapping.test-sub-identity = {
+  flake.tests.primitives-wrapping.test-sub-identity = {
     expr = wrapSub 12345 12345;
     expected = 0;
   };
-  primitives-wrapping.test-sub-underflow = {
+  flake.tests.primitives-wrapping.test-sub-underflow = {
     expr = wrapSub 0 1;
     expected = -1;
   };
-  primitives-wrapping.test-neg-one = {
+  flake.tests.primitives-wrapping.test-neg-one = {
     expr = wrapNeg 1;
     expected = -1;
   };
-  primitives-wrapping.test-neg-zero = {
+  flake.tests.primitives-wrapping.test-neg-zero = {
     expr = wrapNeg 0;
     expected = 0;
   };
-  primitives-wrapping.test-mul-simple = {
+  flake.tests.primitives-wrapping.test-mul-simple = {
     expr = wrapMul 6 7;
     expected = 42;
   };
-  primitives-wrapping.test-mul-primes = {
+  flake.tests.primitives-wrapping.test-mul-primes = {
     # PRIME64_1 * PRIME64_2 mod 2^64
     expr = wrapMul (-7046029288634856825) (-4417276706812531889);
     expected = (-2381459717836149591);
   };
-  primitives-wrapping.test-rotl64-basic = {
+  flake.tests.primitives-wrapping.test-rotl64-basic = {
     expr = rotl64 1 1;
     expected = 2;
   };
-  primitives-wrapping.test-rotl64-wrap = {
+  flake.tests.primitives-wrapping.test-rotl64-wrap = {
     expr = rotl64 minInt 1;
     expected = 1;
   };
-  primitives-wrapping.test-rotl64-identity = {
+  flake.tests.primitives-wrapping.test-rotl64-identity = {
     expr = rotl64 42 0;
     expected = 42;
   };
-  primitives-wrapping.test-neg-intmin = {
+  flake.tests.primitives-wrapping.test-neg-intmin = {
     expr = wrapNeg (-9223372036854775807 - 1);
     expected = (-9223372036854775807 - 1);
   };
-  primitives-wrapping.test-mul-zero = {
+  flake.tests.primitives-wrapping.test-mul-zero = {
     expr = wrapMul 12345 0;
     expected = 0;
   };
-  primitives-wrapping.test-mul-one = {
+  flake.tests.primitives-wrapping.test-mul-one = {
     expr = wrapMul 12345 1;
     expected = 12345;
   };
-  primitives-wrapping.test-mul-neg-one = {
+  flake.tests.primitives-wrapping.test-mul-neg-one = {
     expr = wrapMul 42 (-1);
     expected = -42;
   };
-  primitives-wrapping.test-sub-overflow = {
+  flake.tests.primitives-wrapping.test-sub-overflow = {
     expr = wrapSub (-9223372036854775807 - 1) 1;
     expected = 9223372036854775807;
   };
-  primitives-wrapping.test-rotl64-63 = {
+  flake.tests.primitives-wrapping.test-rotl64-63 = {
     expr = rotl64 1 63;
     expected = (-9223372036854775807 - 1);
   };

@@ -16,12 +16,15 @@ let
 
   inputs = {
     empty = "";
-    tiny = "abc";                   # 3 bytes
-    short = mkString 16;            # 16 bytes
-    medium = mkString 64;           # 64 bytes — 2 stripes
-    long = mkString 256;            # 256 bytes — 8 stripes
-    large = mkString 1024;          # 1 KB
-    json-small = builtins.toJSON { hostname = "igloo"; user = "tux"; };
+    tiny = "abc"; # 3 bytes
+    short = mkString 16; # 16 bytes
+    medium = mkString 64; # 64 bytes — 2 stripes
+    long = mkString 256; # 256 bytes — 8 stripes
+    large = mkString 1024; # 1 KB
+    json-small = builtins.toJSON {
+      hostname = "igloo";
+      user = "tux";
+    };
     json-medium = builtins.toJSON {
       hostname = "igloo";
       user = "tux";
@@ -29,14 +32,16 @@ let
       role = "server";
       enabled = true;
       priority = 42;
-      tags = [ "nix" "gen" "xxhash" ];
+      tags = [
+        "nix"
+        "gen"
+        "xxhash"
+      ];
     };
   };
 
   # xxh64 benchmarks — force evaluation by checking string length
-  xxh64Bench = builtins.mapAttrs (
-    _: input: builtins.stringLength (xxh64 input)
-  ) inputs;
+  xxh64Bench = builtins.mapAttrs (_: input: builtins.stringLength (xxh64 input)) inputs;
 
   # SHA256 benchmarks — same inputs, using builtins.hashString
   sha256Bench = builtins.mapAttrs (
@@ -44,7 +49,8 @@ let
   ) inputs;
 
   # Batch: hash N different strings to amortize nix eval startup
-  mkBatch = hashFn: n:
+  mkBatch =
+    hashFn: n:
     let
       strings = builtins.genList (i: mkString (i + 1)) n;
     in
