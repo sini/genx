@@ -1,16 +1,16 @@
 {
   inputs = {
-    gen.url = "github:sini/gen";
+    gen-harness.url = "github:sini/gen-harness";
     genx.url = "github:sini/genx";
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
   };
 
   outputs =
-    inputs@{ gen, nixpkgs, ... }:
+    inputs@{ gen-harness, nixpkgs, ... }:
     let
       genxLib = inputs.genx.lib;
     in
-    gen.lib.mkCi {
+    gen-harness.lib.mkCi {
       inherit inputs;
       name = "genx";
       testModules = ./tests;
