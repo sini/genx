@@ -15,5 +15,9 @@
       name = "genx";
       testModules = ./tests;
       specialArgs = { inherit genxLib; };
+      extraModules = [
+        # genx takes ADR-0003's treatment: nothing is owed, so no AGENTS.md sheet exists at the root.
+        { gen.ci.agentsMd.sheet = "not-owed"; }
+      ];
     };
 }
