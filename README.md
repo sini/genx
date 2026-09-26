@@ -19,23 +19,23 @@ Implementation highlights: split `{hi, lo}` representation, constant-specialized
 
 ### Low-level primitives
 
-| Module | Provides |
-|---|---|
-| `bits` | `bitShiftLeft`, `bitShiftRight` for signed 64-bit integers |
-| `wrapping` | 64-bit modular `wrapAdd`, `wrapSub`, `wrapMul`, `wrapNeg`, `rotl64` |
-| `split` | `{hi, lo}` split arithmetic optimized for xxh64 |
-| `bytes` | `stringToBytes`, `readLE64`/`readLE32`, byte lookup table via `builtins.fromJSON` |
-| `radix` | `intToHex`, `intToHexPadded` |
-| `math` | `pow`, `powi`, `abs`, `mod`, `mantissa`, `round` |
+| Module     | Provides                                                                          |
+| ---------- | --------------------------------------------------------------------------------- |
+| `bits`     | `bitShiftLeft`, `bitShiftRight` for signed 64-bit integers                        |
+| `wrapping` | 64-bit modular `wrapAdd`, `wrapSub`, `wrapMul`, `wrapNeg`, `rotl64`               |
+| `split`    | `{hi, lo}` split arithmetic optimized for xxh64                                   |
+| `bytes`    | `stringToBytes`, `readLE64`/`readLE32`, byte lookup table via `builtins.fromJSON` |
+| `radix`    | `intToHex`, `intToHexPadded`                                                      |
+| `math`     | `pow`, `powi`, `abs`, `mod`, `mantissa`, `round`                                  |
 
 ### Higher-level utilities
 
-| Module | Provides |
-|---|---|
-| `lists` | `indexOf`, `sublist`, `split`, `lsplit`, `rsplit`, `lpad`, `rpad`, `reverse`, `replicate`, `range`, `imap0`, `last`, `indicesOf`, `removeElems` |
-| `strings` | `charAt`, `indexOfChar`, `lastIndexOfChar`, `removeChars`, `lpadString`, `rpadString`, `toChars` |
-| `encoding` | `encodeBinary`, `decodeBinary`, `encodeBinaryBytes` (MSB-first bit lists) |
-| `trivial` | `not`, `nand`, `nor`, `xor`, `xnor`, `imply`, `implyDefault`, `applyArgs`, `applyAutoArgs` |
+| Module     | Provides                                                                                                                                        |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `lists`    | `indexOf`, `sublist`, `split`, `lsplit`, `rsplit`, `lpad`, `rpad`, `reverse`, `replicate`, `range`, `imap0`, `last`, `indicesOf`, `removeElems` |
+| `strings`  | `charAt`, `indexOfChar`, `lastIndexOfChar`, `removeChars`, `lpadString`, `rpadString`, `toChars`                                                |
+| `encoding` | `encodeBinary`, `decodeBinary`, `encodeBinaryBytes` (MSB-first bit lists)                                                                       |
+| `trivial`  | `not`, `nand`, `nor`, `xor`, `xnor`, `imply`, `implyDefault`, `applyArgs`, `applyAutoArgs`                                                      |
 
 ## Usage
 
@@ -98,7 +98,7 @@ genx/
 
 ## Related
 
-- [gen](https://github.com/sini/gen) — foundational Nix primitives (search monad, identity hashing, validation)
+- [gen](https://github.com/sini/gen) — foundational Nix primitives (identity hashing, validation)
 
 ## License
 
